@@ -59,7 +59,7 @@ public class BattleController {
      */
     @RequestMapping(value = "/fight", method = GET)
     public String showMove(@ModelAttribute MoveInputDto input, Model model) {
-    	
+    	    	
     	logger.debug("showMove()"); 
     	
     	MoveOutputDto output = moveService.execute(input);

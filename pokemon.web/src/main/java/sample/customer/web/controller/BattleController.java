@@ -58,23 +58,23 @@ public class BattleController {
      * @return
      */
     @RequestMapping(value = "/fight", method = GET)
-    public String fight(@ModelAttribute MoveInputDto input, Model model) {
-    	//
-    	//@ModelAttribute InputDto input, Model model
+    public String showMove(@ModelAttribute MoveInputDto input, Model model) {
     	
-    	logger.debug("fight()"); 	
-    	
-    	//moveService.execute(input);
-    	
-    	//OutputDto output = service.execute(input);
+    	logger.debug("showMove()"); 
     	
     	MoveOutputDto output = moveService.execute(input);
-    	
+  	
     	model.addAttribute("output", output);
     	
         return "pokemon/battle/moveMenu";
     }
  
+    
+    
+    
+    
+    
+    
     /**
      * 「ポケモン」コマンド選択時に呼ばれるメソッド
      * ポケモン選択画面を表示する
@@ -126,7 +126,7 @@ public class BattleController {
      */
     @RequestMapping(value = "/move", method = GET)
     public String move(@ModelAttribute CommandInputDto input, Model model) {
-    	logger.debug("move()");
+    	logger.debug("実験！");
     	
     	CommandOutputDto output = commandService.execute(input);
     	
@@ -134,6 +134,7 @@ public class BattleController {
     	
     	return "pokemon/battle/battleMenu";
     	
+    	//TODO 戦闘結果に応じて遷移先を切り替える
 //    	if(true){
 //    		return "pokemon/battle/battleMenu";
 //    	}else{

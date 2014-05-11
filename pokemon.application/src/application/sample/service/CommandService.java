@@ -1,6 +1,8 @@
 package application.sample.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.monster.Pokemon;
 
@@ -11,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 import application.framework.service.IApplicationService;
 import application.generator.IPokemonGenerator;
-import application.sample.dto.SampleInputDto;
-import application.sample.dto.SampleOutputDto;
+import application.sample.dto.CommandInputDto;
+import application.sample.dto.CommandOutputDto;
 
 /**
  * コマンド選択画面への遷移で使用するサービス
@@ -20,9 +22,9 @@ import application.sample.dto.SampleOutputDto;
  *
  */
 @Component("MockService")
-public class SampleService implements IApplicationService<SampleInputDto, SampleOutputDto> {
+public class CommandService implements IApplicationService<CommandInputDto, CommandOutputDto> {
 	
-	private static Log logger = LogFactory.getLog(SampleService.class);
+	private static Log logger = LogFactory.getLog(CommandService.class);
 	
 	@Autowired
 	private IPokemonGenerator generator;
@@ -30,21 +32,27 @@ public class SampleService implements IApplicationService<SampleInputDto, Sample
 	/**
 	 * 
 	 */
-	public SampleOutputDto execute(SampleInputDto input){
+	public CommandOutputDto execute(CommandInputDto input){
 		logger.info("SampleService.execute");
+		CommandOutputDto output = new CommandOutputDto();
 		
-		SampleOutputDto output = new SampleOutputDto();
+		try{
+			List<Pokemon> party = new ArrayList<Pokemon>();
+			
+			party = input.getParty();
+
+			party.add(generator.generate());
+			System.out.println(party.get(0).getNickName());
+			output.setParty(party);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
-		Pokemon pokemon = generator.generate();
-		
-		output.setPokemon(pokemon);
-		
-		//TODO
-		input.setPokemon(pokemon);
-				
 		return output;
 	}
 	
+	//TODO デバッグ用。動作確認後、削除
 	private void showStatus(Pokemon pokemon){
 		System.out.println("図鑑No.：　" + pokemon.getBase().getIndexNumber());
 		System.out.println("種族名：　" + pokemon.getBase().getName());

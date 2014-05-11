@@ -37,8 +37,11 @@ public class Pokemon {
 	//次のレベルまでに必要な経験値
 	private int requiredExp;
 
-	//HP
+	//最大HP
 	private int hp;
+	
+	//現在のHP（TODO ここで持つべき情報？）
+	private int currentHP;
 	
 	//こうげき
 	private int attack;
@@ -220,6 +223,14 @@ public class Pokemon {
 
 	public void setMoves(Move[] moves) {
 		this.moves = moves;
+	}
+
+	public int getCurrentHP() {
+		return currentHP;
+	}
+
+	public void setCurrentHP(int currentHP) {
+		this.currentHP = currentHP;
 	}
 
 }

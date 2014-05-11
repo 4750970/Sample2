@@ -12,7 +12,9 @@
 <body>
 <h1>コマンド選択</h1>
 
-<c:out value="${output.pokemon.base.name}"/>はどうする？
+<p>HP　<meter value="300" max=<c:out value="${output.party[0].hp}"/>></p>
+
+<c:out value="${output.party[0].base.name}"/>はどうする？
 
 <c:url value="/fight" var="url"/>
 <a href="${url}">たたかう</a>

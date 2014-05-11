@@ -12,6 +12,8 @@
 <body>
 <h1>技</h1>
 
+<p>HP　<meter value="300" max=<c:out value="${output.pokemon.hp}"/>></p>
+
 <c:url value="/move" var="url"/>
 <a href="${url}"><c:out value="${output.pokemon.moves[0].name}"/></a>
 

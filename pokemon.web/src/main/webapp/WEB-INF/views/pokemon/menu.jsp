@@ -9,31 +9,24 @@
 </head>
 
 
-<img src="image/155.png" alt="アイコン">
-
 <body>
 <h1>シミュレーター</h1>
-
-	<dl>
-		<dt>メニュー</dt>
-		<dd>図鑑</dd>
-		<dd>対戦</dd>
-		<dt>リンク</dt>
-	</dl>
 
 	<h2>メニュー</h2>
 		<h3>図鑑</h3>
 		<h3><abbr title="努力値エディット">育成</abbr></h3>
-		<h3>対戦</h3>
-		<h3>Under Construction</h3>
+		<c:url value="/battle" var="url"/>
+		<h3><a href="${url}">対戦</a></h3>
+		<h3>・・・・・・Under Construction</h3>
 	<h2>リンク</h2>
 
-<c:url value="/battle" var="url"/>
-<a href="${url}">対戦</a>
 </body>
+
+<%--
+<img src="image/155.png" alt="アイコン">
 
 <audio src="audio/menu.m4a" autoplay>
 <p>お使いのブラウザでは、audioタグをサポートしていません。</p>
 </audio>
- 
+ --%>
 </html>

@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import application.framework.service.IApplicationService;
-import application.sample.dto.SampleInputDto;
-import application.sample.dto.SampleOutputDto;
+import application.sample.dto.CommandInputDto;
+import application.sample.dto.CommandOutputDto;
 
+/**
+ * 初期画面を表示するコントローラー
+ * @author 1
+ *
+ */
 @Controller
 public class MainController {
 	
@@ -25,12 +30,8 @@ public class MainController {
 
     @Autowired
     @Qualifier("MockService")
-    private IApplicationService<SampleInputDto, SampleOutputDto> sampleService;
+    private IApplicationService<CommandInputDto, CommandOutputDto> sampleService;
     
-    /**
-     * 
-     * @return
-     */
     @RequestMapping(value = "/", method = GET)
     public String home() {
     	logger.debug("home");
@@ -50,23 +51,15 @@ public class MainController {
     /**
      * 戦闘開始時に呼ばれるメソッド
      * コマンド選択画面を表示する
-     * @param input
+     * @param input　
      * @param model
      * @return
      */
     @RequestMapping(value = "/battle", method = GET)
-    public String startBattle(@ModelAttribute SampleInputDto input, Model model) {
-    	logger.debug("startBattle()"); 	
-    	SampleOutputDto output = sampleService.execute(input);
+    public String showCommand(@ModelAttribute CommandInputDto input, Model model) {
+    	logger.debug("showCommand()"); 	
+    	CommandOutputDto output = sampleService.execute(input);
     	model.addAttribute("output", output);
-        return "pokemon/battle/battleMenu";
+        return "pokemon/battle/commandMenu";
     }
-    
-//    @RequestMapping(value = "/customer", method = GET)
-//    public String showAllCustomers(Model model) {
-//    	logger.debug("showAllCustomers()");
-//        List<Customer> customers = customerService.findAll();
-//        model.addAttribute("customers", customers);
-//        return "customer/list";
-//    }
 }

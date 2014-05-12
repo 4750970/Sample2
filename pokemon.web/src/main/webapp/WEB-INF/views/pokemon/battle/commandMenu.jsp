@@ -11,22 +11,52 @@
 
 <body>
 <h1>コマンド選択</h1>
+<hr>
+<p>
+<c:out value="${output.enemies[0].base.name}"/>
+<c:choose>
+	<c:when test="${output.enemies[0].individual.sex}">♂</c:when>
+	<c:when test="${!output.enemies[0].individual.sex}">♀</c:when>
+	<c:otherwise>　</c:otherwise>
+</c:choose> 
+Lv.<c:out value="${output.enemies[0].level}"/><br>
+HP　<meter value="300" max=<c:out value="${output.enemies[0].hp}"/>></p>
 
-<p>HP　<meter value="300" max=<c:out value="${output.party[0].hp}"/>></p>
 
-<c:out value="${output.party[0].base.name}"/>はどうする？
+
+<hr>
+<p>
+<c:out value="${output.party[0].base.name}"/>
+<c:choose>
+	<c:when test="${output.enemies[0].individual.sex}">♂</c:when>
+	<c:when test="${!output.enemies[0].individual.sex}">♀</c:when>
+	<c:otherwise>　</c:otherwise>
+</c:choose> 
+Lv.<c:out value="${output.party[0].level}"/><br>
+
+<%--
+c:ifタグで性別に応じて♂♀あるいは" "を表示
+ --%>
+HP　<meter value="300" max=<c:out value="${output.party[0].hp}"/>>
+　　　　
+</p>
+<p>
+　　　300/<c:out value="${output.party[0].hp}"/><br>
+</p>
+
+<c:out value="${output.party[0].base.name}"/>はどうする？<br><br>
 
 <c:url value="/fight" var="url"/>
-<a href="${url}">たたかう</a>
+<a href="${url}">たたかう</a><br>
 
 <c:url value="/pokemon" var="url"/>
-<a href="${url}">ポケモン</a>
+<a href="${url}">ポケモン</a><br>
 
 <c:url value="/bag" var="url"/>
-<a href="${url}">バッグ</a>
+<a href="${url}">バッグ</a><br>
 
 <c:url value="/run" var="url"/>
-<a href="${url}">にげる</a>
+<a href="${url}">にげる</a><br>
 
 </body>
 

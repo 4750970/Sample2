@@ -11,14 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import application.battle.command.dto.CommandInputDto;
-import application.battle.command.dto.CommandOutputDto;
 import application.battle.command.fight.item.dto.ItemInputDto;
 import application.battle.command.fight.item.dto.ItemOutputDto;
 import application.battle.command.fight.move.dto.MoveInputDto;
 import application.battle.command.fight.move.dto.MoveOutputDto;
 import application.battle.command.fight.pokemon.dto.PokemonInputDto;
 import application.battle.command.fight.pokemon.dto.PokemonOutputDto;
+import application.battle.damage.dto.DamageInputDto;
+import application.battle.damage.dto.DamageOutputDto;
 import application.battle.dto.InputDto;
 import application.battle.dto.OutputDto;
 import application.framework.service.IApplicationService;
@@ -41,8 +41,8 @@ public class BattleController {
     private IApplicationService<MoveInputDto, MoveOutputDto> moveService;
     
     @Autowired
-    @Qualifier("CommandService")
-    private IApplicationService<CommandInputDto, CommandOutputDto> commandService;
+    @Qualifier("DamageService")
+    private IApplicationService<DamageInputDto, DamageOutputDto> damageService;
 
     @Autowired
     @Qualifier("PokemonService")
@@ -69,12 +69,7 @@ public class BattleController {
         return "pokemon/battle/moveMenu";
     }
  
-    
-    
-    
-    
-    
-    
+  
     /**
      * 「ポケモン」コマンド選択時に呼ばれるメソッド
      * ポケモン選択画面を表示する
@@ -125,10 +120,9 @@ public class BattleController {
      * @return
      */
     @RequestMapping(value = "/move", method = GET)
-    public String move(@ModelAttribute CommandInputDto input, Model model) {
-    	logger.debug("実験！");
-    	
-    	CommandOutputDto output = commandService.execute(input);
+    public String move(@ModelAttribute DamageInputDto input, Model model) {
+ 	
+    	DamageOutputDto output = damageService.execute(input);
     	
     	model.addAttribute("output", output);
     	

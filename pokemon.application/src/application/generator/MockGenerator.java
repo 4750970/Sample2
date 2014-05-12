@@ -26,7 +26,7 @@ public class MockGenerator implements IPokemonGenerator {
 	@Override
 	public Pokemon generate() {
 
-Pokemon pokemon = new Pokemon();
+		Pokemon pokemon = new Pokemon();
 		
 		//種族情報を決定
 		pokemon.setBase(createBase());
@@ -80,6 +80,7 @@ Pokemon pokemon = new Pokemon();
 		Random random = new Random();		
 		Individual individual = new Individual();
 		individual.setNature(NatureGenerator.execute());
+		//individual.setSex(null);
 		individual.setHp(random.nextInt(32));
 		individual.setAttack(random.nextInt(32));
 		individual.setDiffence(random.nextInt(32));

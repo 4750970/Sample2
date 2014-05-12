@@ -38,12 +38,16 @@ public class CommandService implements IApplicationService<CommandInputDto, Comm
 		
 		try{
 			List<Pokemon> party = new ArrayList<Pokemon>();
+			List<Pokemon> enemies = new ArrayList<Pokemon>();
 			
 			party = input.getParty();
+			enemies = input.getEnemies();
 
 			party.add(generator.generate());
-			System.out.println(party.get(0).getNickName());
+			enemies.add(generator.generate());
+			
 			output.setParty(party);
+			output.setEnemies(enemies);
 			
 		}catch(Exception e){
 			e.printStackTrace();

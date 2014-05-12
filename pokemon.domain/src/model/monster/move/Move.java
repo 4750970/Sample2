@@ -23,6 +23,9 @@ public class Move {
 	//PP（使用可能な回数）
 	private int powerPoint;
 	
+	//現在のPP（TODO ここで管理すべき情報？）
+	private int currentPoint;
+	
 	//優先度（高ければ先制できる　最大6）
 	private int priority;
 	
@@ -119,6 +122,23 @@ public class Move {
 	public void setCanSnatch(boolean canSnatch) {
 		this.canSnatch = canSnatch;
 	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public int getCurrentPoint() {
+		return currentPoint;
+	}
+
+	public void setCurrentPoint(int currentPoint) {
+		this.currentPoint = currentPoint;
+	}
+
 	
 	//TODO 持ち物「おうじゃのしるし」(King's Rock)が有効か
 	//private boolean 

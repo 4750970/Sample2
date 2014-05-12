@@ -14,6 +14,9 @@ public class CommandOutputDto {
 	//手持ちのポケモン（最大6体）
 	private List<Pokemon> party;
 	
+	//相手の手持ち
+	private List<Pokemon> enemies;
+	
 	/**
 	 * 以下、getter、setter
 	 */
@@ -24,5 +27,13 @@ public class CommandOutputDto {
 
 	public void setParty(List<Pokemon> party) {
 		this.party = party;
+	}
+
+	public List<Pokemon> getEnemies() {
+		return enemies;
+	}
+
+	public void setEnemies(List<Pokemon> enemies) {
+		this.enemies = enemies;
 	}
 }

@@ -19,9 +19,16 @@ public class CommandInputDto {
 	//手持ち（TODO 最大6体までになるように制限かける）
 	private List<Pokemon> party;
 	
+	//対戦相手
+	private Trainer rival;
+	
+	//相手の手持ち
+	private List<Pokemon> enemies;
+	
 	//コンストラクタ
 	CommandInputDto(){
 		party = new ArrayList<Pokemon>();
+		enemies = new ArrayList<Pokemon>();
 	}
 
 	/*
@@ -42,5 +49,21 @@ public class CommandInputDto {
 
 	public void setParty(List<Pokemon> party) {
 		this.party = party;
+	}
+
+	public Trainer getRival() {
+		return rival;
+	}
+
+	public void setRival(Trainer rival) {
+		this.rival = rival;
+	}
+
+	public List<Pokemon> getEnemies() {
+		return enemies;
+	}
+
+	public void setEnemies(List<Pokemon> enemies) {
+		this.enemies = enemies;
 	}
 }

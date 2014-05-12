@@ -5,7 +5,7 @@ public class Individual {
 	//せいかく
 	private Nature nature;
 	
-	//性別
+	//性別（TODO 「性別：なし」に対応できるように　boolean以外の型で作る　ValueObject？）
 	private boolean sex;
 	
 	//特性

@@ -1,5 +1,10 @@
 package application.battle.command.fight.move.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.monster.Pokemon;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,11 +27,25 @@ public class MoveService implements IApplicationService<MoveInputDto, MoveOutput
 	
 	public MoveOutputDto execute(MoveInputDto input){
 		
-		//TODO 
-		System.out.println("MoveService execute");
-		
 		MoveOutputDto output = new MoveOutputDto();
 		
+		try{
+			List<Pokemon> party = new ArrayList<Pokemon>();
+			List<Pokemon> enemies = new ArrayList<Pokemon>();
+			
+			party = input.getParty();
+			enemies = input.getEnemies();
+
+			party.add(generator.generate());
+			enemies.add(generator.generate());
+			
+			output.setParty(party);
+			output.setEnemies(enemies);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
 		output.setPokemon(generator.generate());
 		
 		return output;
